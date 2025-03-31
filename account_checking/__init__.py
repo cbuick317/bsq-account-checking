@@ -1,8 +1,4 @@
-import datetime, subprocess, platform, os
-import logging
-
-import azure.functions as func
-
+import datetime, subprocess, platform, os, logging, azure.functions as func
 
 def main(mytimer: func.TimerRequest) -> None:
     utc_timestamp = datetime.datetime.utcnow().replace(
