@@ -36,7 +36,7 @@ def disabled_current_users(graph_headers, sql_connection):
                         disabled_current_users = pd.concat([disabled_current_users,user_data])
 
             except Exception as err:
-                    logging.error('There was an error retrieving information for '+str(row['Sage_Name'])+'%s', err)
+                    logging.error('There was an error retrieving account information for '+str(row['Sage_Name'])+'%s', err)
 
         if len(disabled_current_users) > 0:
             logging.info(f"Current employees with disabled accounts: {disabled_current_users}")

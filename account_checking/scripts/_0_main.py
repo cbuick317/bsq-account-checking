@@ -31,6 +31,6 @@ def main():
     from ._6_future_occupancies_assigned_licences import future_occupancies_assigned_licences
     future_occupancies_assigned_licences_data = future_occupancies_assigned_licences(graph_headers, sql_connection, licence_library)
    
-    #Notification email sent to Service Desk
-    from ._8_notification_email import notification_email
-    notification_email(graph_headers, leavers_and_future_starters_user_licences, current_user_licences, active_leavers, disabled_current_users, future_occupancies_assigned_licences_data)
+    # #Notification email sent to Service Desk
+    # from ._8_notification_email import notification_email
+    # notification_email(graph_headers, leavers_and_future_starters_user_licences, current_user_licences, active_leavers, disabled_current_users, future_occupancies_assigned_licences_data)

@@ -4,6 +4,8 @@ import requests, pandas as pd, json, logging
 def future_occupancies_assigned_licences(graph_headers, sql_connection, licence_library):
 
     try:
+        logging.info("Future occupancies with assigned licences")
+
         #SQL query to retrieve list of users
         employees_list_query = """Select BSq_Email, [Occupancy_Start_Date], Sage_Name 
                             FROM [Reports].[CentralSupport].[future_and_current_users] 
