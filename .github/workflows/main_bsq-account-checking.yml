@@ -11,7 +11,6 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_NAME: "bsq-account-checking" # set this to the name of your Azure Function App
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   PYTHON_VERSION: '3.11' # set this to the python version to use (supports 3.6, 3.7, 3.8)
 
@@ -70,9 +69,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_126075C5FD1A4BB3BACCEBBB606E0B49 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_7C1F5F3D89B7469198C1EF798734B664 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_7E68AEEAC8B74700A74213F2691CE9DA }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_BF293134202C44A687DF73697336F65D }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_5430D348C3C747D981227B03AC3A0CBB }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0A89C01018B84248AD1BFC1C12759E69 }}
 
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
