@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: |
           source venv/bin/activate 
-          target=.python_packages/lib/site-packages" -r requirements.txt
+          target=".python_packages/lib/site-packages" -r requirements.txt
 
       # Optional: Add step to run tests here
 
