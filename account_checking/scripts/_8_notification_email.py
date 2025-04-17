@@ -1,39 +1,18 @@
-import requests, pyodbc, pandas as pd, json, logging
-
-from sqlalchemy import create_engine
-from sqlalchemy.engine import URL
-from urllib import parse
-from datetime import date,datetime, timedelta
+import requests, pandas as pd, json, logging
+from datetime import date
 
 def notification_email(graph_headers, leavers_and_future_starters_user_licences, current_user_licences, active_leavers, disabled_current_users, future_occupancies_assigned_licences_data):
 
+    leavers_and_future_starters_user_licences = "None" if leavers_and_future_starters_user_licences.empty else str(leavers_and_future_starters_user_licences.to_html(index = False))
 
-    if not leavers_and_future_starters_user_licences.empty:
-        leavers_and_future_starters_user_licences =  str(leavers_and_future_starters_user_licences.to_html(index = False))
-    else:
-        leavers_and_future_starters_user_licences = "None"
-
-    if not current_user_licences.empty:
-        current_user_licences =  str(current_user_licences.to_html(index = False))
-    else:
-        current_user_licences = "None"
-
-    if not active_leavers.empty:
-        active_leavers =  str(active_leavers.to_html(index = False))
-    else:
-        active_leavers = "None"
-
-    if not disabled_current_users.empty:
-        disabled_current_users =  str(disabled_current_users.to_html(index = False))
-    else:
-        disabled_current_users = "None"
-
-    if not future_occupancies_assigned_licences_data.empty:
-        future_occupancies_assigned_licences_data =  str(future_occupancies_assigned_licences_data.to_html(index = False))
-    else:
-        future_occupancies_assigned_licences_data = "None"
-
-            
+    current_user_licences = "None" if current_user_licences.empty else str(current_user_licences.to_html(index = False))
+ 
+    active_leavers = "None" if active_leavers.empty else str(active_leavers.to_html(index = False))
+ 
+    disabled_current_users = "None" if disabled_current_users.empty else  str(disabled_current_users.to_html(index = False))
+   
+    future_occupancies_assigned_licences_data =  "None" if future_occupancies_assigned_licences_data.empty else  str(future_occupancies_assigned_licences_data.to_html(index = False))
+   
     notification_email_definition = json.dumps(
          {
                     "message": 
@@ -61,12 +40,10 @@ def notification_email(graph_headers, leavers_and_future_starters_user_licences,
                                     future_occupancies_assigned_licences_data + "<br/>\n<br/>\n"
                                     
                                 },
-                            "toRecipients": [
-                                {"emailAddress":{"address": "servicedesk@bluesquare.uk.com"}}
-                                ],
+                            "toRecipients": [{"emailAddress":{"address": "servicedesk@bluesquare.uk.com"}}],
                         }, 
                     "saveToSentItems": "true"
                 })
     
     response = requests.request("POST","https://graph.microsoft.com/beta/users/dataadmin@bluesquare.uk.com/sendMail",headers=graph_headers, data=notification_email_definition )
-    logging.info("Email sent "+str(response.status_code))
+    logging.info(f"Email sent {str(response.status_code)}")
