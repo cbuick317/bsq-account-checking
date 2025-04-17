@@ -36,19 +36,22 @@ jobs:
 
       - name: Install dependencies
         run: |
-          source venv/bin/activate
+          source venv/bin/activate 
+          pip install requests
           pip install -r requirements.txt
 
       # Optional: Add step to run tests here
 
       - name: Zip artifact for deployment
-        run: zip release.zip * -r --exclude venv/\*
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: release.zip
+          path: |
+            release.zip
+            !venv/
 
   deploy:
     runs-on: ubuntu-latest
