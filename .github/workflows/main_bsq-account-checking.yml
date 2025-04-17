@@ -66,6 +66,7 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip     
+<<<<<<< HEAD
         
       - name: Login to Azure
         uses: azure/login@v2
@@ -73,6 +74,15 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_BF293134202C44A687DF73697336F65D }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_5430D348C3C747D981227B03AC3A0CBB }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0A89C01018B84248AD1BFC1C12759E69 }}
+=======
+        
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_002277E81E4A428EA260981B61C02A96 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A151033C05D543C7992ED1977EB82B92 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A1EA073FB5D442138A28A54779F50C1B }}
+>>>>>>> 00eb896dc54130493d16b71b57fbb3117c0aecbc
 
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
