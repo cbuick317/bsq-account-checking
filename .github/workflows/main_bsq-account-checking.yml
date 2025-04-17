@@ -37,7 +37,6 @@ jobs:
       - name: Install dependencies
         run: |
           source venv/bin/activate 
-          pip install requests
           pip install -r requirements.txt
 
       # Optional: Add step to run tests here
